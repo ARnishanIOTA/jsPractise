@@ -11,7 +11,8 @@
 function addElement () { 
   // create a new div element 
   var newDiv = document.createElement("div"); 
-  newDiv.setAttribute("id", "newDivId");
+  newDiv.setAttribute("style", "background : red;");
+  // newDiv.setAttribute("id", "newDivId");
   // and give it some content 
   var newContent = document.createTextNode("Hi there and greetings!"); 
   // add the text node to the newly created div
@@ -21,8 +22,36 @@ function addElement () {
   // add the newly created element and its content into the DOM 
   var currentDiv = document.getElementById("div1"); 
   document.body.insertBefore(newDiv, currentDiv); 
-  document.getElementById("newDivId").style.background = "blue";
+  // document.getElementById("newDivId").setAttribute("style", "background : green;");
+  var button = document.createElement("BUTTON");
+  button.innerHTML = 'click me ! ';
+  document.body.appendChild(button); 
+   // button.addEventListener("click", function(){
+  //     alert(Thanks for clicks ! ) ;
+  //  });
+  var container = document.createElement("div"); 
+  container.setAttribute("style", " width: 400px;height: 400px;position: relative;background: yellow;");
+  var animate = document.createElement("div");
+  animate.setAttribute("style","width: 50px;height: 50px;position: absolute;background: red;");
+  container.appendChild(animate);
+  document.body.appendChild(container);
+  function myMove() {
+  var elem = animate;   
+  var pos = 0;
+  var id = setInterval(frame, 100);
+  function frame() {
+    if (pos == 350) {
+      clearInterval(id);
+    } else {
+      pos++; 
+      elem.style.top = `${pos}px`; 
+      elem.style.left = pos + "px"; 
+    }
+  }
+ }
+ myMove();
 }
+
 </script>
 
 </body>
